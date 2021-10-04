@@ -7,10 +7,18 @@ import com.example.homework_008.databinding.ItemABinding
 import com.example.homework_008.databinding.ItemBBinding
 
 
+class UserAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-class UserAdapter(private val userList: MutableList<User>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private val userList = mutableListOf<User>()
+
+    fun setData(userList: MutableList<User>) {
+        this.userList.clear()
+        this.userList.addAll(userList)
+        notifyDataSetChanged()
 
 
+    }
 
 
     companion object {
@@ -31,7 +39,6 @@ class UserAdapter(private val userList: MutableList<User>) : RecyclerView.Adapte
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
 
 
         if (holder is ViewHolderA) {

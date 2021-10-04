@@ -8,7 +8,7 @@ import com.example.homework_008.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
 
     private val userList = mutableListOf<User>(
@@ -24,7 +24,8 @@ class MainActivity : AppCompatActivity() {
         User(nickName = "nickname B")
     )
 
-    private val adapter = UserAdapter(userList)
+    private val adapter = UserAdapter()
+
 
     private val layoutManager = GridLayoutManager(this, 3)
 
@@ -34,9 +35,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        adapter.setData(userList)
 
         binding.recyclerLayout.adapter = adapter
         binding.recyclerLayout.layoutManager = layoutManager
+
 
 
         binding.btnAdd.setOnClickListener {
@@ -55,14 +58,13 @@ class MainActivity : AppCompatActivity() {
             binding.eTName.text.toString()
         }
 
-       val nickname = binding.eTNickName.text.toString()
-
-
+        val nickname = binding.eTNickName.text.toString()
 
 
         val addedUser = User(name = name, nickName = nickname)
         userList.add(addedUser)
-        adapter.notifyDataSetChanged()
+        adapter.setData(userList)
+        //adapter.notifyDataSetChanged()
 
     }
 }
