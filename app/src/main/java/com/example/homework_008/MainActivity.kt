@@ -5,15 +5,28 @@ import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.homework_008.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
 
 
-    var dataList111 = mutableListOf<User>()
+    private val userList = mutableListOf<User>(
+        User("nameAA", "nickname AA12"),
+        User("nameAaA", "nickname AAA"),
+        User(nickName = "nickname B"),
+        User("nameAA", "nickname AA12"),
+        User("nameAaA", "nickname AAA"),
+        User(nickName = "nickname B"),
+        User("nameAA", "nickname AA12"),
+        User("nameAaA", "nickname AAA"),
+        User("nameAaA", "nickname AAA"),
+        User(nickName = "nickname B")
+    )
 
-    private val adapter = UserAdapter()
-    private val layoutManager = GridLayoutManager(this, 2)
+    private val adapter = UserAdapter(userList)
+
+    private val layoutManager = GridLayoutManager(this, 3)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +39,30 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerLayout.layoutManager = layoutManager
 
 
+        binding.btnAdd.setOnClickListener {
+            onAddButtonClick()
+
+        }
+
+
+    }
+
+    private fun onAddButtonClick() {
+
+        val name: String? = if (binding.eTName.text.isNullOrBlank()) {
+            null
+        } else {
+            binding.eTName.text.toString()
+        }
+
+       val nickname = binding.eTNickName.text.toString()
+
+
+
+
+        val addedUser = User(name = name, nickName = nickname)
+        userList.add(addedUser)
+        adapter.notifyDataSetChanged()
 
     }
 }

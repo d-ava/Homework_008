@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/background_b"
     android:layout_margin="5dp"
@@ -22,7 +22,7 @@
         android:id="@+id/tVNickName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NickName"
+        android:text="@string/nickname"
         android:layout_marginTop="30dp"
         android:layout_marginStart="5dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
         android:layout_height="0dp"
         app:layout_constraintDimensionRatio="1:1"
         android:src="@drawable/ic_delete"
-        app:layout_constraintStart_toEndOf="@id/iVB"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
         />
@@ -45,7 +45,7 @@
         android:layout_height="0dp"
         app:layout_constraintDimensionRatio="1:1"
         android:src="@drawable/ic_update"
-        app:layout_constraintStart_toEndOf="@id/iVB"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnDelete"
 
         />

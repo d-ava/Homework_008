@@ -6,19 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.homework_008.databinding.ItemABinding
 import com.example.homework_008.databinding.ItemBBinding
 
-class UserAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val userList = mutableListOf<User>(
-        User("nameAA", "nickname AA12"),
-        User("nameAaA", "nickname AAA"),
-        User(nickName = "nickname B"),
-        User("nameAA", "nickname AA12"),
-        User("nameAaA", "nickname AAA"),
-        User(nickName = "nickname B"),
-        User("nameAA", "nickname AA12"),
-        User("nameAaA", "nickname AAA"),
-        User(nickName = "nickname B")
-    )
+
+class UserAdapter(private val userList: MutableList<User>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+
 
 
     companion object {
@@ -29,7 +21,7 @@ class UserAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        //ViewHolderA(ItemABinding.inflate(LayoutInflater.from(parent.context), parent, false))
+
 
         if (viewType == USER_A) {
             ViewHolderA(ItemABinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -39,8 +31,7 @@ class UserAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        /*  if (holder is ViewHolderA)
-          holder.onBind()*/
+
 
 
         if (holder is ViewHolderA) {
@@ -54,7 +45,7 @@ class UserAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     override fun getItemViewType(position: Int): Int {
-        //return USER_A
+
 
         return if (userList[position].name == null) USER_B else USER_A
     }
@@ -76,7 +67,7 @@ class UserAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private lateinit var user: User
         fun onBind() {
             user = userList[adapterPosition]
-            // binding.tVName.text = user.name
+
             binding.tVNickName.text = user.nickName
             //binding.iVB.setImageResource(user.image)
         }
